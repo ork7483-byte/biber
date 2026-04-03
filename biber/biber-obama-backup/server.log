@@ -1,0 +1,5 @@
+✅ http://localhost:4000
+📦 Obama Oral History 로컬 서빙 + 원본 프록시
+✅ http://localhost:4001
+(node:1140) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
