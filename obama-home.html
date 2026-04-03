@@ -66,7 +66,7 @@
       .title__subtitle { word-break: keep-all !important; }
 
       /* 원본 JS 타일 숨김 해제 — 우리가 직접 제어 */
-      .tiles--interviews .tile { opacity: 1 !important; transform: none !important; visibility: visible !important; }
+      .tiles--interviews .tile { opacity: 1 !important; visibility: visible !important; }
       .js-hide-shortform { display: none !important; }
       /* 6개 이후 카드 숨김 (확장 전) */
       .tiles--interviews .tile:nth-child(n+7) { display: none; }
@@ -4244,6 +4244,30 @@ window.addEventListener('load', function() {
         });
       })(cards[i]);
     }
+  });
+});
+
+// 3D tilt 효과 — 400+ 카드 & 스토리 카드
+window.addEventListener('load', function() {
+  var tiles = document.querySelectorAll('.tile.js-tile');
+  tiles.forEach(function(card) {
+    card.style.transformStyle = 'preserve-3d';
+    card.style.overflow = 'hidden';
+    card.style.borderRadius = '8px';
+    card.style.transition = 'transform 0.3s ease-out, box-shadow 0.3s ease-out';
+    card.addEventListener('mousemove', function(e) {
+      var rect = card.getBoundingClientRect();
+      var x = e.clientX - rect.left;
+      var y = e.clientY - rect.top;
+      var rotateY = ((x / rect.width) - 0.5) * 24;
+      var rotateX = ((0.5 - (y / rect.height))) * 24;
+      card.style.transform = 'perspective(1000px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) translateY(-8px)';
+      card.style.boxShadow = '0 20px 40px rgba(0,0,0,0.15)';
+    });
+    card.addEventListener('mouseleave', function() {
+      card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+      card.style.boxShadow = 'none';
+    });
   });
 });
 
