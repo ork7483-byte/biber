@@ -1,0 +1,9 @@
+{
+  "rewrites": [
+    { "source": "/videos", "destination": "/videos-new.html" },
+    { "source": "/videos/", "destination": "/videos-new.html" },
+    { "source": "/view/:name", "destination": "/interviews/:name.html" },
+    { "source": "/story/:name", "destination": "/stories/:name.html" },
+    { "source": "/media/:path*", "destination": "/:path*" }
+  ]
+}
